@@ -15,12 +15,13 @@ pred = zeros(1, size(data, 2));
 %  Instructions: Compute pred using theta assuming that the labels start 
 %                from 1.
 
+% hypotheses
+M = theta*data;
+M = bsxfun(@minus, M, max(M, [], 1)); % prevent overflow
+h = exp(M);
+h = bsxfun(@rdivide, h, sum(h)); % normalize
 
-
-
-
-
-
+[mm, pred] = max(h, [], 1);
 
 % ---------------------------------------------------------------------
 
