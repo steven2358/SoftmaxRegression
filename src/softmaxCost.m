@@ -23,19 +23,21 @@ thetagrad = zeros(numClasses, inputSize);
 %                You need to compute thetagrad and cost.
 %                The groundTruth matrix might come in handy.
 
+% hypotheses
+M = theta*data(1:inputSize,:);
+M = bsxfun(@minus, M, max(M, [], 1)); % prevent overflow
+h = exp(M);
+h = bsxfun(@rdivide, h, sum(h)); % normalize
 
+% cost
+cost = groundTruth.*log(h);
+cost = -1/numCases*sum(cost(:)) + lambda/2*sum(theta(:).^2);
 
-
-
-
-
-
-
-
-
+% gradient
+thetagrad = (groundTruth - h)*data(1:inputSize,:)';
+thetagrad = -1/numCases*thetagrad + lambda*theta;
 
 % ------------------------------------------------------------------
 % Unroll the gradient matrices into a vector for minFunc
 grad = [thetagrad(:)];
 end
-
