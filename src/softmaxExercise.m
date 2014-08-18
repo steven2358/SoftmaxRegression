@@ -52,8 +52,9 @@ inputData = images;
 DEBUG = true; % Set DEBUG to true when debugging.
 if DEBUG
     inputSize = 8;
-    inputData = randn(8, 100);
-    labels = randi(10, 100, 1);
+    numCases = 100;
+    inputData = randn(inputSize, numCases);
+    labels = randi(numClasses, numCases, 1);
 end
 
 % Randomly initialise theta
