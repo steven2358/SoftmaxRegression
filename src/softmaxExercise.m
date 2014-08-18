@@ -97,10 +97,12 @@ end
 %  you can start training your softmax regression code using softmaxTrain
 %  (which uses minFunc).
 
+tic
 options.maxIter = 100;
 softmaxModel = softmaxTrain(inputSize, numClasses, lambda, ...
                             inputData, labels, options);
-                          
+toc
+
 % Although we only use 100 iterations here to train a classifier for the 
 % MNIST data set, in practice, training for more iterations is usually
 % beneficial.
