@@ -10,6 +10,9 @@
 %  or any other files other than those mentioned above.
 %  (However, you may be required to do so in later exercises)
 
+close all;
+clear all;
+
 %%======================================================================
 %% STEP 0: Initialise constants and parameters
 %
@@ -35,8 +38,9 @@ lambda = 1e-4; % Weight decay parameter
 % On some platforms, the files might be saved as 
 % train-images.idx3-ubyte / train-labels.idx1-ubyte
 
-images = loadMNISTImages('mnist/train-images-idx3-ubyte');
-labels = loadMNISTLabels('mnist/train-labels-idx1-ubyte');
+% images = loadMNISTImages('mnist/train-images-idx3-ubyte');
+% labels = loadMNISTLabels('mnist/train-labels-idx1-ubyte');
+[images,labels] = get_mnist_data('train');
 labels(labels==0) = 10; % Remap 0 to 10
 
 inputData = images;
